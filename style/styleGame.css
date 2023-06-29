@@ -1,0 +1,17 @@
+section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+section div{
+    display: inline;
+    width: 25%;
+    height: 50%;
+}
+section div img{
+    display: flex;
+    width: 50%;
+    max-height: 25%;
+}
