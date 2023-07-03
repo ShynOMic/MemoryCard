@@ -22,7 +22,12 @@ let createBalise = () => {
     for (let key of allIndex) {
 
         let madiv = document.createElement("div");
+        madiv.classList.add("card")
+        let img2 = document.createElement("img")
+        img2.classList.add("card-back")
+        img2.src = "../img/dosDeCartesPokemon.jpg"
         let img = document.createElement("img");
+        img.classList = ('card-front')
         img.src = CartesPokemon[key];
 
         img.addEventListener("click",() => {
@@ -37,6 +42,7 @@ let createBalise = () => {
         })
 
         madiv.appendChild(img);
+        madiv.appendChild(img2);
         document.getElementById("jeu").appendChild(madiv);
     }
 }
