@@ -1,32 +1,30 @@
 header{
+    border-bottom: solid yellowgreen;
+    background-color: rgb(44, 157, 255);
+    margin: 5px;
+    padding: 40px;
+    border: solid 2px;
+}
+header img{
+    width: 320px;
+}
+header div{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: solid yellowgreen;
-    background-color: rgb(44, 157, 255);
-    margin: 0;
-    padding: 0;
-    border: solid 2px;
-}
-
-header img{
-    
-    width: 220px;
 }
 main{
-    display: flex;
-    
-    flex-direction: column;
+    height: 100%;
     font-family: 'jvd';
-    justify-content: center;
-    padding: 5%;
+    padding: 10px;
+    margin:5px;
     border : solid 2px;
-    position: static;
 }
 body{
+    height: 939px;
+    display: flex;
+    flex-direction: column;
     font-family: 'jvd';
-    margin: 0;
-    padding: 0;
     background-color : black;
     color: aliceblue;
 }
@@ -53,7 +51,6 @@ footer{
     justify-content: center ;
     background-color: rgb(44, 157, 255);
     border: solid 2px;
-    position: static;
     width: 100%;
 }
 @font-face {

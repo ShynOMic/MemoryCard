@@ -1,17 +1,55 @@
+header{
+    border-bottom: solid yellowgreen;
+    background-color: rgb(44, 157, 255);
+    margin: 5px;
+    padding: 30px;
+    border: solid 2px;
+}
+header img{
+    width: 320px;
+}
+header div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    font-family: 'jvd';
+    padding: 10px;
+    margin:5px;
+    border : solid 2px;
+}
+body{
+    font-family: 'jvd';
+    background-color : black;
+    color: aliceblue;
+}
 section{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden
 }
-
 section div{
-    display: inline;
-    width: 25%;
-    height: 50%;
+    width: calc(20% - 20px); /* Chaque div prendra 25% de la largeur moins l'espacement */
+    height: calc(20% - 20px); /* Chaque div prendra 25% de la hauteur moins l'espacement */
+    margin: 15px;
 }
 section div img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+footer{
     display: flex;
-    width: 50%;
-    max-height: 25%;
+    justify-content: center ;
+    background-color: rgb(44, 157, 255);
+    border: solid 2px;
+    width: 100%;
+}
+@font-face {
+	font-family: 'jvd';
+    src: url(../font/ARCADECLASSIC.TTF);
 }
