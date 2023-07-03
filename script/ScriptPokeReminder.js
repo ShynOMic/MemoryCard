@@ -8,7 +8,8 @@ let CartesPokemon = {
     6: "../img/raykwaza.png",
     7: "../img/zarbi.png",
 };
-
+let carteTrouver = [];
+let carteCliquer = null
 let createBalise = () => {
     let allIndex = []
 
@@ -23,17 +24,23 @@ let createBalise = () => {
         let madiv = document.createElement("div");
         let img = document.createElement("img");
         img.src = CartesPokemon[key];
-        img.id = key.toString()
 
         img.addEventListener("click",() => {
-            cardComparator(img.id);
+            if(!carteCliquer){
+                carteCliquer = img;
+            }
+            else if(carteCliquer){
+                cardComparator(img);
+                carteCliquer = null;
+            }
+            verifWin();
         })
 
         madiv.appendChild(img);
         document.getElementById("jeu").appendChild(madiv);
     }
 }
-const shuffleArray = (array) => {
+const shuffleArray = (array) => { // mélange le tablau
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const temp = array[i];
@@ -41,29 +48,30 @@ const shuffleArray = (array) => {
         array[j] = temp;
     }
 }
-let carteRetournee = null;
-let carteCliquee = 0;
 
-let cardComparator = (index) => {
-    let img = document.getElementById(index);
-
-    if(carteRetournee === null && !img.classList.contains("retournee")){
-        img.classList.add("retournee");
-        carteRetournee = img;
-
-        carteCliquee++;
-
-        if(carteCliquee === 2){
-            if(carteRetournee.id === img.id){
-                console.log("ca marche : ")
-            }
-            else{
-                console.log("ca marche pas")
-            }
+let cardComparator = (img) => {
+    if(carteCliquer===img){ // vérifie si la carte cliquer la seconde fois n'est pas exactement la même à la même position
+        return
+    }
+    if(!carteTrouver.includes(carteCliquer)){
+        if(carteCliquer.src === img.src){//vérifie si la première image cliquer possède la même source que la seconde image cliqué 
+            console.log("ca marche : ");
+            carteTrouver.push(img);
+            carteTrouver.push(carteCliquer);
+            console.log(carteTrouver);
         }
+        else{
+            console.log("ca marche pas");
+            carteCliquer = null;//vide les cartes retourné si ce ne sont pas les mêmes
+            }
+    } 
+}        
+
+let verifWin = () => {
+    if(carteTrouver.length===16){
+        console.log("win")
     }
 }
-
 
 
 createBalise();
