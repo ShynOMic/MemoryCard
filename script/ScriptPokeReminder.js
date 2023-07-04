@@ -10,6 +10,8 @@ let CartesPokemon = {
 };
 let carteTrouver = [];
 let carteCliquer = null
+let indexCarteCliquer = null
+let imgcartecliquer;
 let createBalise = () => {
     let allIndex = []
 
@@ -19,33 +21,62 @@ let createBalise = () => {
 
     shuffleArray(allIndex)
 
-    for (let key of allIndex) {
-
-        let madiv = document.createElement("div");
-        madiv.classList.add("card")
-        let img2 = document.createElement("img")
-        img2.classList.add("card-back")
-        img2.src = "../img/dosDeCartesPokemon.jpg"
+    allIndex.forEach((key, index) => {
+        console.log(index)
+        let divCard = document.createElement("div");
+        divCard.classList.add("card")
+        
+        let divFront = document.createElement("div");
+        divFront.classList.add("side")
+        divFront.classList.add("side--front");
         let img = document.createElement("img");
-        img.classList = ('card-front')
-        img.src = CartesPokemon[key];
+        img.classList = ('card-front-img')
 
-        img.addEventListener("click",() => {
+        let divBack= document.createElement("div");
+        divBack.classList.add("side")
+        divBack.classList.add("side--back");
+        let img2 = document.createElement("img")
+        img2.classList.add("card-back-img")
+        img2.src = "../img/dosDeCartesPokemon.jpg"
+        
+
+        divCard.addEventListener("click",() => {
+            img2.src = CartesPokemon[key];
+            console.log("click")
             if(!carteCliquer){
-                carteCliquer = img;
+                imgcartecliquer = img2
+                carteCliquer = key;
+                Carte = index;
             }
             else if(carteCliquer){
-                cardComparator(img);
+                document.querySelector("#jeu").style.pointerEvents = 'none';
+                setTimeout(() => {
+                    document.querySelector("#jeu").style.pointerEvents = 'auto';
+                }, 500);
+                if(Carte===index){
+                    console.log("C'est la même abriti");
+                     // vérifie si la carte cliquer la seconde fois n'est pas exactement la même à la même position
+                    return
+                }
+                if(!cardComparator(key)){
+                    setTimeout(() => {
+                        img2.src="../img/dosDeCartesPokemon.jpg"
+                        imgcartecliquer.src="../img/dosDeCartesPokemon.jpg"
+                    }, 500);
+                }
                 carteCliquer = null;
+                Carte = null;
             }
             verifWin();
         })
 
-        madiv.appendChild(img);
-        madiv.appendChild(img2);
-        document.getElementById("jeu").appendChild(madiv);
-    }
+        divBack.appendChild(img2);
+        divCard.appendChild(divFront);
+        divCard.appendChild(divBack);
+        document.getElementById("jeu").appendChild(divCard);
+    })
 }
+
 const shuffleArray = (array) => { // mélange le tablau
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -55,27 +86,28 @@ const shuffleArray = (array) => { // mélange le tablau
     }
 }
 
-let cardComparator = (img) => {
-    if(carteCliquer===img){ // vérifie si la carte cliquer la seconde fois n'est pas exactement la même à la même position
-        return
-    }
+let cardComparator = (key) => {
+    console.log("compare")
+    
     if(!carteTrouver.includes(carteCliquer)){
-        if(carteCliquer.src === img.src){//vérifie si la première image cliquer possède la même source que la seconde image cliqué 
+        if(carteCliquer === key){//vérifie si la première image cliquer possède la même source que la seconde image cliqué 
             console.log("ca marche : ");
-            carteTrouver.push(img);
+            carteTrouver.push(key);
             carteTrouver.push(carteCliquer);
             console.log(carteTrouver);
+            return true
         }
         else{
             console.log("ca marche pas");
             carteCliquer = null;//vide les cartes retourné si ce ne sont pas les mêmes
+            return false;
             }
     } 
+    return true;
 }        
-
 let verifWin = () => {
     if(carteTrouver.length===16){
-        console.log("win")
+        alert("win !")
     }
 }
 
