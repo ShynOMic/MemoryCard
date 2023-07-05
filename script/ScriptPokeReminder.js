@@ -105,9 +105,12 @@ let cardComparator = (key) => {
             }
     } 
     return true;
-}        
+}     
+let wincount;
 let verifWin = () => {
     if(carteTrouver.length===16){
+        wincount++;
+        localStorage.setItem("wincount",wincount);
         document.location.href="../page/ScoreBoard.html"
         return true;
     }
