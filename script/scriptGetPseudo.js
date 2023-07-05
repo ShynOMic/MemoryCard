@@ -1,6 +1,4 @@
-let user = {} 
-
 let AddUser = () => {
-    user.Pseudo = document.getElementById("pseudo").value
-    localStorage.setItem("PseudoJSON", JSON.stringify(user))
+    let pseudo = document.getElementById("pseudo").value
+    localStorage.setItem("pseudo", pseudo)
 }

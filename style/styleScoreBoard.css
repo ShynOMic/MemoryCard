@@ -1,0 +1,49 @@
+header{
+    border-bottom: solid yellowgreen;
+    background-color: rgb(44, 157, 255);
+    margin: 5px;
+    padding: 40px;
+    border: solid 2px;
+}
+header img{
+    width: 320px;
+}
+header div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div a{
+    text-decoration: none;
+    color: inherit;   
+}
+main{
+    height: 100%;
+    font-family: 'jvd';
+    padding: 10px;
+    margin:5px;
+    border : solid 2px;
+}
+main p {
+    text-align: center;
+}
+body{
+    height: 625px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'jvd';
+    background-color : black;
+    color: aliceblue;
+    
+}
+footer{
+    display: flex;
+    justify-content: center ;
+    background-color: rgb(44, 157, 255);
+    border: solid 2px;
+    width: 100%;
+}
+@font-face {
+	font-family: 'jvd';
+    src: url(../font/ARCADECLASSIC.TTF);
+}

@@ -13,6 +13,10 @@ header div{
     align-items: center;
     justify-content: center;
 }
+div a{
+    text-decoration: none;
+    color: inherit;
+}
 main{
     font-family: 'jvd';
     padding: 10px;

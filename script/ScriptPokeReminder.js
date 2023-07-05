@@ -12,6 +12,7 @@ let carteTrouver = [];
 let carteCliquer = null
 let indexCarteCliquer = null
 let imgcartecliquer;
+
 let createBalise = () => {
     let allIndex = []
 
@@ -107,8 +108,10 @@ let cardComparator = (key) => {
 }        
 let verifWin = () => {
     if(carteTrouver.length===16){
-        alert("win !")
+        document.location.href="../page/ScoreBoard.html"
+        return true;
     }
+    return false;
 }
 
 
