@@ -1,4 +1,10 @@
+let user = {};
+
 let AddUser = () => {
+
     let pseudo = document.getElementById("pseudo").value
-    localStorage.setItem("pseudo", pseudo)
-}
+    user.pseudo = pseudo;
+    user.winCount = 0;
+
+    localStorage.setItem("user", JSON.stringify(user));
+};

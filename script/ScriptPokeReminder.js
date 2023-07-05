@@ -8,6 +8,12 @@ let CartesPokemon = {
     6: "../img/raykwaza.png",
     7: "../img/zarbi.png",
 };
+
+let userdata = localStorage.getItem("user");
+let user = {};
+user = JSON.parse(userdata);
+let winCount = 0
+
 let carteTrouver = [];
 let carteCliquer = null
 let indexCarteCliquer = null
@@ -45,7 +51,7 @@ let createBalise = () => {
             img2.src = CartesPokemon[key];
             console.log("click")
             if(!carteCliquer){
-                imgcartecliquer = img2
+                imgcartecliquer = img2;
                 carteCliquer = key;
                 Carte = index;
             }
@@ -61,13 +67,13 @@ let createBalise = () => {
                 }
                 if(!cardComparator(key)){
                     setTimeout(() => {
-                        img2.src="../img/dosDeCartesPokemon.jpg"
-                        imgcartecliquer.src="../img/dosDeCartesPokemon.jpg"
+                        img2.src="../img/dosDeCartesPokemon.jpg";
+                        imgcartecliquer.src="../img/dosDeCartesPokemon.jpg";
                     }, 500);
                 }
                 carteCliquer = null;
                 Carte = null;
-            }
+            };
             verifWin();
         })
 
@@ -88,7 +94,7 @@ const shuffleArray = (array) => { // mélange le tablau
 }
 
 let cardComparator = (key) => {
-    console.log("compare")
+    console.log("compare");
     
     if(!carteTrouver.includes(carteCliquer)){
         if(carteCliquer === key){//vérifie si la première image cliquer possède la même source que la seconde image cliqué 
@@ -96,7 +102,7 @@ let cardComparator = (key) => {
             carteTrouver.push(key);
             carteTrouver.push(carteCliquer);
             console.log(carteTrouver);
-            return true
+            return true;
         }
         else{
             console.log("ca marche pas");
@@ -105,13 +111,13 @@ let cardComparator = (key) => {
             }
     } 
     return true;
-}     
-let wincount;
+}
 let verifWin = () => {
     if(carteTrouver.length===16){
-        wincount++;
-        localStorage.setItem("wincount",wincount);
-        document.location.href="../page/ScoreBoard.html"
+        winCount++;
+        user.winCount = winCount;
+        console.log(user);
+        document.location.href="../page/ScoreBoard.html";
         return true;
     }
     return false;
