@@ -18,11 +18,16 @@ div a{
     color: inherit;
 }
 main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     height: 100%;
     font-family: 'jvd';
     padding: 10px;
     margin:5px;
     border : solid 2px;
+    
 }
 body{
     height: 939px;
