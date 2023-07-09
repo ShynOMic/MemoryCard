@@ -1,7 +1,6 @@
 header{
     border-bottom: solid yellowgreen;
     background-color: rgb(44, 157, 255);
-    margin: 5px;
     padding: 40px;
     border: solid 2px;
 }
@@ -24,13 +23,13 @@ main{
     flex-direction: column;
     height: 100%;
     font-family: 'jvd';
-    padding: 10px;
-    margin:5px;
+    /* padding: 10px;
+    margin:5px; */
     border : solid 2px;
     
 }
 body{
-    height: 939px;
+    height: 930px;
     display: flex;
     flex-direction: column;
     font-family: 'jvd';
